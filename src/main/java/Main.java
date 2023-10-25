@@ -7,17 +7,16 @@ public class Main {
         // ex5();
     }
 
-    static class Person {
+    static class Person extends Animal{
         private String firstName;
         private String lastName;
-        private byte age;
         private int social;
         private static int count;
 
         public Person(){
             this.firstName = "";
             this.lastName = "";
-            this.age = 0;
+            super.age = 0;
             this.social = 0;
             count++;
         }
@@ -25,7 +24,7 @@ public class Main {
         public Person(String firstName, String lastName) {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.age = 0;
+            super.age = 0;
             this.social = 0;
             count++;
         }
@@ -33,7 +32,7 @@ public class Main {
         public Person(String firstName, String lastName, byte age, int social) {
             this.firstName = firstName;
             this.lastName = lastName;
-            this.age = age;
+            super.age = age;
             this.social = social;
             count++;
         }
@@ -47,7 +46,7 @@ public class Main {
         }
 
         public int getAge() {
-            return this.age;
+            return super.age;
         }
 
         public int getSocial() {
@@ -103,6 +102,14 @@ public class Main {
         }
     }
 
+    public static class Animal {
+        private byte age;
+    }
+
+    public static class Dog extends Animal {}
+
+    public static class Cat extends Animal {}
+
     private static void ex1() {
         var p1 = new Person();
         var p2 = new Person("Jon", "Smith");
@@ -120,7 +127,7 @@ public class Main {
     }
 
     private static void ex2() {
-        System.out.println("Todo...");
+        System.out.println("DONE");
     }
 
     private static void ex3() {
