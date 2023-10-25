@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        ex1();
+        // ex1();
         // ex2();
-        // ex3();
+        ex3();
         // ex4();
         // ex5();
     }
@@ -110,6 +110,30 @@ public class Main {
 
     public static class Cat extends Animal {}
 
+    public static class AwesomeNumber {
+        private int num;
+
+        public AwesomeNumber(int number) {
+            this.num = number;
+        }
+
+        public AwesomeNumber() {
+            this.num = 0;
+        }
+
+        public int getAwesomeNumber() {
+            return this.num;
+        }
+
+        public static int add(AwesomeNumber num1, AwesomeNumber num2) {
+            return num1.getAwesomeNumber() + num2.getAwesomeNumber();
+        }
+
+        public static int subtract(AwesomeNumber num1, AwesomeNumber num2) {
+            return num1.getAwesomeNumber() - num2.getAwesomeNumber();
+        }
+    }
+
     private static void ex1() {
         var p1 = new Person();
         var p2 = new Person("Jon", "Smith");
@@ -131,7 +155,12 @@ public class Main {
     }
 
     private static void ex3() {
-        System.out.println("Todo...");
+        var n1 = new AwesomeNumber(4);
+        var n2 = new AwesomeNumber(2);
+        var result1 = AwesomeNumber.add(n1, n2);
+        var result2 = AwesomeNumber.subtract(n1, n2);
+        System.out.println(result1);
+        System.out.println(result2);
     }
 
     private static void ex4() {
