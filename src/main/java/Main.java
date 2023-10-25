@@ -2,8 +2,8 @@ public class Main {
     public static void main(String[] args) {
         // ex1();
         // ex2();
-        ex3();
-        // ex4();
+        // ex3();
+        ex4();
         // ex5();
     }
 
@@ -134,6 +134,44 @@ public class Main {
         }
     }
 
+    public interface Calculatable {
+
+        Integer add(Integer number1, Integer number2);
+        Integer subtract(Integer number1, Integer number2);
+        Integer multiply(Integer number1, Integer number2);
+        Integer divide(Integer number1, Integer number2);
+    
+        String getHistory();
+    }
+
+    public static class Calculator implements Calculatable {
+        private String history = "";
+
+        public Integer add(Integer num1, Integer num2) {
+            history += num1 + " + " + num2 + " = " + (num1 + num2) + ", ";
+            return num1 + num2;
+        }
+
+        public Integer subtract(Integer num1, Integer num2) {
+            history += num1 + " - " + num2 + " = " + (num1 - num2) + ", ";
+            return num1 - num2;
+        }
+
+        public Integer divide(Integer num1, Integer num2) {
+            history += num1 + " / " + num2 + " = " + (num1 / num2) + ", ";
+            return num1 / num2;
+        }
+
+        public Integer multiply(Integer num1, Integer num2) {
+            history += num1 + " * " + num2 + " = " + (num1 * num2);
+            return num1 * num2;
+        }
+
+        public String getHistory() {
+            return history;
+        }
+    }
+
     private static void ex1() {
         var p1 = new Person();
         var p2 = new Person("Jon", "Smith");
@@ -164,7 +202,17 @@ public class Main {
     }
 
     private static void ex4() {
-        System.out.println("Todo...");
+        var calculator =  new Calculator();
+        var result1 = calculator.add(1, 2);
+        var result2 = calculator.subtract(4, 2);
+        var result3 = calculator.divide(10, 5);
+        var result4 = calculator.multiply(2, 2);
+
+        System.out.println(result1);
+        System.out.println(result2);
+        System.out.println(result3);
+        System.out.println(result4);
+        System.out.println(calculator.getHistory());
     }
 
     private static void ex5() {
