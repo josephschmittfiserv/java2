@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         // ex1();
         // ex2();
         // ex3();
-        ex4();
-        // ex5();
+        // ex4();
+        ex5();
     }
 
     static class Person extends Animal{
@@ -106,7 +109,11 @@ public class Main {
         private byte age;
     }
 
-    public static class Dog extends Animal {}
+    public static class Dog extends Animal {
+        public Dog(byte n) {
+            super.age = n;
+        }
+    }
 
     public static class Cat extends Animal {}
 
@@ -172,6 +179,56 @@ public class Main {
         }
     }
 
+    public static class ShoppingCart extends Item{
+        private static List<Item> cartItems = new ArrayList<>();
+        private static double total;
+
+        public static void addItem(Item item) {
+            cartItems.add(item);
+        }
+
+        public static void calculateTotal() {
+
+            for (Item item : cartItems) {
+                total += item.getPrice() * item.getAmount();
+            }
+        }
+
+        public static String getTotal() {
+            return "$" + String.format("%.2f", total);
+        }
+    }
+
+    public static class Item {
+        private double price;
+        private String name;
+        private int amount;
+
+        public Item() {
+            this.price = 0;
+            this.amount = 0;
+            this.name = "";
+        }
+
+        public Item(double price, int amount, String name) {
+            this.price = price;
+            this.amount = amount;
+            this.name = name;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
     private static void ex1() {
         var p1 = new Person();
         var p2 = new Person("Jon", "Smith");
@@ -216,6 +273,10 @@ public class Main {
     }
 
     private static void ex5() {
-        System.out.println("Todo....");
+        var shoppingCart = new ShoppingCart();
+        shoppingCart.addItem(new Item(2.00F, 4, "Socks"));
+        shoppingCart.addItem(new Item(10.00F, 2, "Shirts"));
+        shoppingCart.calculateTotal();
+        System.out.println(shoppingCart.getTotal());
     }
 }
