@@ -281,13 +281,58 @@ class Item {
     }
 }
 
+abstract class Shape {
+    public int length;
+    public int width;
+
+    public String draw() {
+        String shape = "";
+        int m = this.length;
+        int n = this.width;
+
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= m; j++)
+            {
+                if (i == 1 || i == n || 
+                    j == 1 || j == m)            
+                    shape += "*";
+                else
+                    shape += " ";            
+            }
+            shape += "\n";
+        }
+        return shape;
+    }
+
+}
+
+class Square extends Shape {
+
+    public Square(int area) {
+        super.length = area;
+        super.width = area;
+    }
+
+}
+
+class Rectangle extends Shape {
+
+    public Rectangle(int length, int width) {
+        super.length = length;
+        super.width = width;
+    }
+
+}
+
 public class Main {
     public static void main(String[] args) {
         // ex1();
         // ex2();
         // ex3();
         // ex4();
-        ex5();
+        // ex5();
+        ex6();
     }
 
     private static void ex1() {
@@ -340,5 +385,14 @@ public class Main {
         shoppingCart.calculateTotal();
         var invoice = shoppingCart.shipOrder("Jon Smith", "123 Green Street", "Austin", "TX", 78737);
         System.out.println(invoice);
+    }
+
+    public static void ex6() {
+        var shapes = new ArrayList<Shape>();
+        shapes.add(new Square(3));
+        shapes.add(new Rectangle(10,3));
+        for (Shape s : shapes) {
+            System.out.println(s.draw());
+        }
     }
 }
